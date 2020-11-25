@@ -1,9 +1,11 @@
+
+
 <div class="mt-1">
   <div *ngIf="canUserUpdateAndDelete()">
-    <textarea [formControl]="notesInfo"></textarea>
+    <textarea textarea autosize class="my-textarea"  [formControl]="notesInfo"></textarea>
   </div>
   <div *ngIf="!canUserUpdateAndDelete()">
-    <textarea [formControl]="notesInfo" disabled></textarea> 
+    <textarea textarea autosize class="my-textarea" [formControl]="notesInfo" disabled></textarea> 
   </div>
   <div>
     <label> Date {{day}}/{{month}}/{{year}}</label>

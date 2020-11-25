@@ -70,6 +70,9 @@ import { EditCustomerComponent } from './CustomerFolder/editCustomer/editCustome
 import { AddCustomerComponent } from './CustomerFolder/AddCustomer/AddCustomer.component';
 import { CustomerTasksComponent } from './ReportFolder/CustomerTasks/CustomerTasks.component';
 import { ChartsModule } from 'ng2-charts';
+import { Autosize } from 'ng-autosize';
+import {AutosizeModule} from 'ngx-autosize';
+import { MatNavComponent } from './mat-nav/mat-nav.component';
 
 
 // register FullCalendar plugins
@@ -116,7 +119,8 @@ export function tokengetter() {
     SidebarNavigationComponent,
     CustomerComponent,
     CustomerTasksComponent,
-    CustomerComponent
+    CustomerComponent,
+    MatNavComponent,
    ],
   imports: [
     CommonModule,
@@ -133,6 +137,7 @@ export function tokengetter() {
     MatNativeDateModule,
     MatDatepickerModule,
     MatTableModule,
+    AutosizeModule,
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule,

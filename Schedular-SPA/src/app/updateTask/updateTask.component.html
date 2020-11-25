@@ -1,63 +1,42 @@
-<div *ngIf="isDataAvailable">
- 
-  <button type="submit" class="btn btn-danger" (click)="closeButton()" style="float: right;">x</button>
+  <div *ngIf="isDataAvailable">
   
-  <form disable *ngIf="loggedIn()" [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="mainForm">
-          <h3>Update Task</h3>  
-   
-          <fieldset [disabled]=taskScheduleData.isClosed>
-          <!-- <div *ngIf="authorised()"> to allow to disallow standard account to select -->
-          <div>
-            <label>Task Number {{taskScheduleData.id}}</label>
-          </div>
-          <div>
-              <label>Assigned to </label>
-              <select class="ml-2" formControlName="userName">
-                <option *ngFor="let userMemberModel of userMemberModels"
-                  [value]="userMemberModel.id"> 
-                    {{userMemberModel.firstName}} {{userMemberModel.lastName}}
-                </option>      
-            </select>
-            <label class="ml-2">last updated by {{userNameOfLastEdit}} on {{dayLastEdit}}/{{monthLastEdit}}/{{yearLastEdit}} {{timeLastEdit}}</label>
-          </div>
-          <div>
-              <label>Title</label>
-              <textarea formControlName="title"></textarea>
-          </div>
-
-          <div>
-            <label class="mr-1">Add time to task</label>
-            <input type="checkbox" value="True" formControlName="hasTimeLimit">
-          </div>
-
-          <div *ngIf="this.profileForm.value.hasTimeLimit === true">
-            <div class="mb-1">
-              <label>Start Date</label>
-              <input type="date" formControlName="startDate" class="ml-2">
-          
-              <label class="ml-3">Start Time</label>
-              <select class="ml-1" formControlName="startHourTime">
-                <option *ngFor="let hourSelector of hourSelectors"
-                  [value]="hourSelector">
-                  {{hourSelector}}
-                </option>
+    <button type="submit" class="btn btn-danger" (click)="closeButton()" style="float: right;">x</button>
+    
+    <form disable *ngIf="loggedIn()" [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="mainForm">
+            <h3>Update Task</h3>  
+    
+            <fieldset [disabled]=taskScheduleData.isClosed>
+            <!-- <div *ngIf="authorised()"> to allow to disallow standard account to select -->
+            <div>
+              <label>Task Number {{taskScheduleData.id}}</label>
+            </div>
+            <div>
+                <label>Assigned to </label>
+                <select class="ml-2" formControlName="userName">
+                  <option *ngFor="let userMemberModel of userMemberModels"
+                    [value]="userMemberModel.id"> 
+                      {{userMemberModel.firstName}} {{userMemberModel.lastName}}
+                  </option>      
               </select>
-          
-              <label> : </label>
-          
-              <select formControlName="startMinuteTime">
-                <option *ngFor="let minuteSelector of minuteSelectors"
-                  [value]="minuteSelector">
-                  {{minuteSelector}}
-                </option>
-              </select> 
-            </div>  
-            <div class="mb-4"> 
-                <label>End Date</label>
-                <input type="date" formControlName="endDate" class="ml-2">
+              <label class="ml-2">last updated by {{userNameOfLastEdit}} on {{dayLastEdit}}/{{monthLastEdit}}/{{yearLastEdit}} {{timeLastEdit}}</label>
+            </div>
+            <div>
+                <label>Title</label>
+                <textarea formControlName="title"></textarea>
+            </div>
+
+            <div>
+              <label class="mr-1">Add time to task</label>
+              <input type="checkbox" value="True" formControlName="hasTimeLimit">
+            </div>
+
+            <div *ngIf="this.profileForm.value.hasTimeLimit === true">
+              <div class="mb-1">
+                <label>Start Date</label>
+                <input type="date" formControlName="startDate" class="ml-2">
             
-                <label class="ml-3">End Time</label>
-                <select class="ml-2" formControlName="endHourTime">
+                <label class="ml-3">Start Time</label>
+                <select class="ml-1" formControlName="startHourTime">
                   <option *ngFor="let hourSelector of hourSelectors"
                     [value]="hourSelector">
                     {{hourSelector}}
@@ -66,90 +45,115 @@
             
                 <label> : </label>
             
-                <select formControlName="endMinuteTime">
+                <select formControlName="startMinuteTime">
                   <option *ngFor="let minuteSelector of minuteSelectors"
                     [value]="minuteSelector">
                     {{minuteSelector}}
                   </option>
                 </select> 
+              </div>  
+              <div class="mb-4"> 
+                  <label>End Date</label>
+                  <input type="date" formControlName="endDate" class="ml-2">
+              
+                  <label class="ml-3">End Time</label>
+                  <select class="ml-2" formControlName="endHourTime">
+                    <option *ngFor="let hourSelector of hourSelectors"
+                      [value]="hourSelector">
+                      {{hourSelector}}
+                    </option>
+                  </select>
+              
+                  <label> : </label>
+              
+                  <select formControlName="endMinuteTime">
+                    <option *ngFor="let minuteSelector of minuteSelectors"
+                      [value]="minuteSelector">
+                      {{minuteSelector}}
+                    </option>
+                  </select> 
+              </div>
             </div>
-          </div>
-          
-          <div>
-            <label>{{customerType}}</label>
-            <select class="ml-2" formControlName="customer">
-              <option></option>
-              <option *ngFor="let customer of customers"
-                [value]="customer.id"> 
-                  {{customer.name}}
-              </option>      
-          </select>
-          </div>
+            
+            <div>
+              <label>{{customerType}}</label>
+              <select class="ml-2" formControlName="customer">
+                <option></option>
+                <option *ngFor="let customer of customers"
+                  [value]="customer.id"> 
+                    {{customer.name}}
+                </option>      
+            </select>
+            </div>
 
-          <div>
-            <label class="mr-1">High Priority</label>
-            <input type="checkbox" value="True" formControlName="highPriority">
-          </div>
-        </fieldset>
+            <div>
+              <label class="mr-1">High Priority</label>
+              <input type="checkbox" value="True" formControlName="highPriority">
+            </div>
+          </fieldset>
 
-          <div>
-            <label class="mr-1">Close Task</label>
-            <input type="checkbox" value="True" formControlName="isClosed">
-          </div>
+            <div>
+              <label class="mr-1">Close Task</label>
+              <input type="checkbox" value="True" formControlName="isClosed">
+            </div>
 
-          <div>
-            <button type="submit" class="btn btn-primary">Update Task</button>
-            <button type="button" class="btn btn-primary ml-2" (click)="deleteTask()" [disabled]=taskScheduleData.isClosed>Delete Task</button>
+            <div>
+              <button type="submit" class="btn btn-primary">Update Task</button>
+              <button type="button" class="btn btn-primary ml-2" (click)="deleteTask()" [disabled]=taskScheduleData.isClosed>Delete Task</button>
 
-          
-            <div class="text-danger" *ngIf="getDateError()">start date cannot be greater than end date</div>
-            <div class="text-danger" *ngIf="getTimingError()">start time cannot be greater than end time</div>
-            <div class="text-danger" *ngIf="getNullError()">All fields need to be filled out</div>    
-          </div>
+            
+              <div class="text-danger" *ngIf="getDateError()">start date cannot be greater than end date</div>
+              <div class="text-danger" *ngIf="getTimingError()">start time cannot be greater than end time</div>
+              <div class="text-danger" *ngIf="getNullError()">All fields need to be filled out</div>    
+            </div>
 
-          <fieldset [disabled]=taskScheduleData.isClosed>
+            <fieldset [disabled]=taskScheduleData.isClosed>
 
-    <button type="button" class="btn btn-success mt-3" (click)="attachmentBox()">Add Attachment</button>
-    
-    <div>
-      Attached files
-        <div *ngFor="let attachment of attachmentArray; let i = index">
-          <button type="button" (click)="deleteAttachment(attachment)">Delete</button>
-          <a class="taskId" role="button" (click)="downloadAttachment(attachment)">{{attachment.fileName}}</a>
-        </div>  
-    </div>
-  
+      <button type="button" class="btn btn-success mt-3" 
+      (click)="attachmentBox()"> 
 
-    <div class="mt-3">
+        <i class="fa fa-paperclip"></i>Add Attachment
+      </button>
       
-        <div>        
-            <label>New Note</label>
-            <textarea class="textareaNew" formControlName="newNote"></textarea>
-        </div>
-        <div>
-          <button type="button" class="btn btn-primary" (click)="noteCreation()" [disabled]=taskScheduleData.isClosed>Add New note</button>
-        </div>
-     
-    </div>
-
-    <div class="mt-4">
       <div>
-        <label>Previous Notes</label>
-      </div> 
-      <div *ngFor="let noteA of notesArray; index as i">
-        <app-note [note]="notesArray[i]" (reload)="ngOnInit()">  
-        </app-note>
-      </div> 
-    </div> 
-  </fieldset> 
-  </form>  
+        Attached files
+          <div *ngFor="let attachment of attachmentArray; let i = index">
+            <button type="button" (click)="deleteAttachment(attachment)">Delete</button>
+            <a class="taskId" role="button" (click)="downloadAttachment(attachment)">{{attachment.fileName}}</a>
+          </div>  
+      </div>
+    
 
-</div>
+      <div class="mt-3">
+        
+          <div>        
+              <label>New Note</label>
+              <textarea class="textareaNew" formControlName="newNote"></textarea>
+          </div>
+          <div>
+            <button type="button" class="btn btn-primary" (click)="noteCreation()" [disabled]=taskScheduleData.isClosed>Add New note</button>
+          </div>
+      
+      </div>
 
-<div *ngIf="!isDataAvailable">
-  <button type="submit" class="btn btn-danger" (click)="closeButton()" style="float: right;">x</button>
-  Incorrect Task number
-</div>
+      <div class="mt-4">
+        <div>
+          <label>Previous Notes</label>
+        </div> 
+        <div *ngFor="let noteA of notesArray; index as i">
+          <app-note [note]="notesArray[i]" (reload)="ngOnInit()">  
+          </app-note>
+        </div> 
+      </div> 
+    </fieldset> 
+    </form>  
+
+  </div>
+
+  <div *ngIf="!isDataAvailable">
+    <button type="submit" class="btn btn-danger" (click)="closeButton()" style="float: right;">x</button>
+    Incorrect Task number
+  </div>
 
 
 

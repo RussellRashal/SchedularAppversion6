@@ -1,7 +1,7 @@
 
 import { EditUserService } from './../../_services/editUser.service';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, MinLengthValidator, ValidatorFn, Validators } from '@angular/forms';
 import { StateStorageService } from 'src/app/_services/stateStorage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -52,12 +52,10 @@ export class PasswordResetComponent implements OnInit {
       };
 
       this.editUserService.editAnyPasswordAdmin(this.model).subscribe(next => {
-        alert('Password has been changed');
+        alert(next);
       }, error => {
-          console.log(error);
+        alert(error.error);
       });
-
-      this.ResetPass.reset();
     }
   }
 
@@ -66,7 +64,12 @@ export class PasswordResetComponent implements OnInit {
   initForm() {
     this.ResetPass = new FormGroup({
       username: new FormControl(''),
-      newPassword: new FormControl(''),
+      newPassword: new FormControl('',
+      [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(8)
+      ]),
       confirmPassword: new FormControl('')
     });
   }

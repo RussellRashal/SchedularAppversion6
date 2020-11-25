@@ -68,8 +68,11 @@ namespace Schedular.API.Data
                 .Include(ts => ts.Attachments)
                 .Include(c => c.customer)
                 .ToListAsync();
+
+                taskSchedule.ForEach(t => t.Notes = t.Notes.OrderByDescending(n => n.DateCreated).ToList());
                 
             return taskSchedule;  
+        
         }  
      
 

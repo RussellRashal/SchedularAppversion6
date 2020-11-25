@@ -1,3 +1,6 @@
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
 <button type="submit" class="btn btn-danger" (click)="closeButton()" style="float: right;">x</button>
 <h3 class="text-center">Add Attachment</h3>
 
@@ -76,14 +79,18 @@
 
           <button type="button" class="btn btn-success btn-s"
                   (click)="uploadFile()" [disabled]="!uploader.getNotUploadedItems().length">
-              <span class="glyphicon glyphicon-upload"></span> Upload all
-          </button>
-          <button type="button" class="btn btn-danger btn-s"
-                  (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-              <span class="glyphicon glyphicon-trash"></span> Remove all
-          </button>
-      </div>
+              <span class="fa fa-upload"></span> Upload all
 
+          </button>
+          
+          <button  class="btn btn-danger btn-s"
+                  (click)="uploader.clearQueue()" 
+                  [disabled]="!uploader.queue.length">
+                  <i class="fa fa-trash-o fa-lg"></i> 
+        </button>
+      </div>
+      
   </div>
 
+  
 </div>

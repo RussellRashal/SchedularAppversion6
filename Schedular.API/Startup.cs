@@ -24,6 +24,7 @@ using Microsoft.IdentityModel.Tokens;
 using Schedular.API.Data;
 using Schedular.API.Helpers;
 using Schedular.API.Models;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace Schedular.API
 {
@@ -40,8 +41,10 @@ namespace Schedular.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(x => x.UseMySql(Configuration
-                .GetConnectionString("DefaultConnection")));
-            
+                .GetConnectionString("DefaultConnection"),
+                        new MySqlServerVersion(new Version(8, 0, 21)), 
+                        mySqlOptions => mySqlOptions
+                            .CharSetBehavior(CharSetBehavior.NeverAppend)));
             //lockout options
             var lockoutOptions = new LockoutOptions()
             {

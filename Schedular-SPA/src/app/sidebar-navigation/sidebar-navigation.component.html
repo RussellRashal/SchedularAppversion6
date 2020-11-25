@@ -5,23 +5,24 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-        <a class="nav-link" [routerLink]="['/CalendarView']">Home</a>
-        <a class="nav-link" [routerLink]="['/viewTasks']">viewTasks</a>
+        <a mat-list-item class="links" [routerLink]="['/CalendarView']">Home</a>
+        <a mat-list-item class="links" [routerLink]="['/viewTasks']">viewTasks</a>
         <label>Reports</label>
-        <a class="nav-link" [routerLink]="['/hoursworked']">HoursWorked</a>
-        <a class="nav-link" [routerLink]="['/CustomerTask']">Tasks by {{customerType}}</a>
-        <a class="nav-link" [routerLink]="['/HighPriority']">High Priority Tasks</a>
-        <a class="nav-link" [routerLink]="['/NumberClosedTasksByUser']">Closed Tasks</a>
+        <a mat-list-item class="links" [routerLink]="['/hoursworked']">HoursWorked</a>
+        <a mat-list-item class="links" [routerLink]="['/CustomerTask']">Tasks by {{customerType}}</a>
+        <a mat-list-item class="links" [routerLink]="['/HighPriority']">High Priority Tasks</a>
+        <a mat-list-item  class="links"[routerLink]="['/NumberClosedTasksByUser']">Closed Tasks</a>
         <label>Admin Console</label>
-        <a class="nav-link" [routerLink]="['/editUsername']">EditUsername</a>
-        <a class="nav-link" [routerLink]="['/editRole']">editRole</a>
-        <a class="nav-link" [routerLink]="['/register']">Create account</a>
-        <a class="nav-link" [routerLink]="['/Password']">Password Reset</a>
-        <a class="nav-link" [routerLink]="['/EnableDisableAccountComponent']">enable & disable</a>
+        <a mat-list-item class="links" [routerLink]="['/editUsername']">EditUsername</a>
+        <a mat-list-item  class="links"[routerLink]="['/editRole']">editRole</a>
+        <a mat-list-item  class="links"[routerLink]="['/register']">Create account</a>
+        <a mat-list-item class="links" [routerLink]="['/Password']">Password Reset</a>
+        <a mat-list-item  class="links"[routerLink]="['/EnableDisableAccountComponent']">enable & disable</a>
         <label>Help</label>
-        <a class="nav-link" [routerLink]="['/StandardPassword']">Reset Password</a>
-        <a class="nav-link" [routerLink]="['/CustomerComponent']">{{customerType}}</a>
+        <a mat-list-item class="links"[routerLink]="['/StandardPassword']">Reset Password</a>
+        <a mat-list-item class="links"[routerLink]="['/CustomerComponent']">{{customerType}}</a>
     </mat-nav-list>
+   
   </mat-sidenav>
 
   
